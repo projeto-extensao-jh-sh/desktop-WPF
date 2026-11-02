@@ -1,0 +1,259 @@
+﻿<Window x:Class="DesktopApp.View.PanelControlView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="WindowStart" Title="Panel de Control" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Topmost="True" Height="640" Width="960"
+        Style="{DynamicResource StyleWindow}" Template="{DynamicResource TemplateWindow_AKN}">
+
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="CorFundo" Color="#F0EFEE"/>
+        <SolidColorBrush x:Key="CorTitulo" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorSubtitulo" Color="#8C8C99"/>
+        <SolidColorBrush x:Key="CorCabecalhoCard" Color="#8C2A2A"/>
+        <SolidColorBrush x:Key="CorLink" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorItemTexto" Color="#3D6FB5"/>
+        <SolidColorBrush x:Key="CorAvatar" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorBreadcrumbAtivo" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorBreadcrumbLink" Color="#8C8C99"/>
+
+        <DropShadowEffect x:Key="SombraCard" BlurRadius="10" ShadowDepth="1" Opacity="0.10" Color="Black"/>
+
+        <Style x:Key="StyleItemLista" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource CorItemTexto}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,0,0,8"/>
+        </Style>
+
+        <Style x:Key="StyleCardModulo" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Effect" Value="{StaticResource SombraCard}"/>
+        </Style>
+
+        <Style x:Key="StyleLinkBreadcrumb" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource CorBreadcrumbLink}"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="{StaticResource CorFundo}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ===================== CABEÇALHO (BARRA VERMELHA) ===================== -->
+        <Border Grid.Row="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#7A1F1F" Offset="0"/>
+                    <GradientStop Color="#B23A3A" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Margin="24,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Background="White" CornerRadius="8" Width="34" Height="34">
+                        <Image Source="/Resources/logo.png" Width="22" Height="22"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                        <TextBlock Text="LM Foods" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Text="CONTROL DE COMEDOR" Foreground="#F0D9D9" FontSize="8" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock x:Name="txtRelogio" Text="00:34:17" Foreground="White" FontWeight="Bold"
+                               FontSize="15" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txtData" Text="Domingo, 26 De Julio De 2026" Foreground="#F0D9D9"
+                               FontSize="10" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">
+                        <TextBlock x:Name="txtNomeUsuario" Text="Ana Carvalho" Foreground="White"
+                                   FontWeight="SemiBold" FontSize="12" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="txtCargoUsuario" Text="Gerente Geral" Foreground="#F0D9D9"
+                                   FontSize="10" HorizontalAlignment="Right"/>
+                    </StackPanel>
+
+                    <Border Background="{StaticResource CorAvatar}" CornerRadius="8" Width="30" Height="30">
+                        <TextBlock x:Name="txtIniciais" Text="AC" Foreground="White" FontWeight="Bold" FontSize="12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Button x:Name="btnSair" Click="btnSair_Click" Background="Transparent" BorderThickness="0"
+                            Cursor="Hand" Margin="14,0,0,0" Padding="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE7E8;" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text=" Salir" Foreground="White" FontSize="12" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ===================== CONTEÚDO ===================== -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="24,16,24,24">
+
+                <!-- Breadcrumb -->
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <TextBlock Text="Inicio" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource CorBreadcrumbAtivo}"/>
+                </StackPanel>
+
+                <TextBlock Text="Panel de Control" FontSize="22" FontWeight="Bold" Foreground="{StaticResource CorTitulo}"/>
+                <TextBlock Text="Seleccione un módulo para comenzar" FontSize="12"
+                           Foreground="{StaticResource CorSubtitulo}" Margin="0,2,0,18"/>
+
+                <!-- ===================== CARDS DE MÓDULOS ===================== -->
+                <UniformGrid Columns="4" Rows="1">
+
+                    <!-- Card: Mantenimiento -->
+                    <Border Style="{StaticResource StyleCardModulo}" Margin="0,0,12,0">
+                        <StackPanel>
+                            <Border Background="{StaticResource CorCabecalhoCard}" CornerRadius="8,8,0,0" Padding="14,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🔧" FontSize="15" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Mantenimiento" Foreground="White" FontWeight="Bold" FontSize="13" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Margin="14,14,14,10">
+                                <TextBlock Text="•  Comensales" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Empresas Mant." Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Centro de Costo" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Productos" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Family Producto" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Caja/Usuario" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Huella Dactilar" Style="{StaticResource StyleItemLista}" Margin="0"/>
+                            </StackPanel>
+                            <TextBlock Text="Abrir módulo &gt;" Foreground="{StaticResource CorLink}" FontSize="11"
+                                       Margin="14,0,0,14" Cursor="Hand" MouseLeftButtonUp="AbrirModulo_Click" Tag="Mantenimiento"/>
+                        </StackPanel>
+                    </Border>
+                    <!-- Card: Ventas -->
+                    <Border Style="{StaticResource StyleCardModulo}" Margin="0,0,12,0">
+                        <StackPanel>
+                            <Border Background="{StaticResource CorCabecalhoCard}" CornerRadius="8,8,0,0" Padding="14,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🍽️" FontSize="15" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Ventas" Foreground="White" FontWeight="Bold" FontSize="13" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Margin="14,14,14,10">
+                                <TextBlock Text="•  Registro" Style="{StaticResource StyleItemLista}" Margin="0"/>
+                            </StackPanel>
+                            <TextBlock Text="Abrir módulo &gt;" Foreground="{StaticResource CorLink}" FontSize="11"
+                                       Margin="14,0,0,14" Cursor="Hand" MouseLeftButtonUp="AbrirModulo_Click" Tag="Ventas"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Card: Reportes -->
+                    <Border Style="{StaticResource StyleCardModulo}" Margin="0,0,12,0">
+                        <StackPanel>
+                            <Border Background="{StaticResource CorCabecalhoCard}" CornerRadius="8,8,0,0" Padding="14,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📊" FontSize="15" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Reportes" Foreground="White" FontWeight="Bold" FontSize="13" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Margin="14,14,14,10">
+                                <TextBlock Text="•  Rep. de Venta" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Rep. Comensal" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Rep. Semanal" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Kardex Registro" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Liquidación" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Gestión Gerencial" Style="{StaticResource StyleItemLista}" Margin="0"/>
+                            </StackPanel>
+                            <TextBlock Text="Abrir módulo &gt;" Foreground="{StaticResource CorLink}" FontSize="11"
+                                       Margin="14,0,0,14" Cursor="Hand" MouseLeftButtonUp="AbrirModulo_Click" Tag="Reportes"/>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Card: Utilitarios -->
+                    <Border Style="{StaticResource StyleCardModulo}">
+                        <StackPanel>
+                            <Border Background="{StaticResource CorCabecalhoCard}" CornerRadius="8,8,0,0" Padding="14,12">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="⚙️" FontSize="15" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Utilitarios" Foreground="White" FontWeight="Bold" FontSize="13" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                            <StackPanel Margin="14,14,14,10">
+                                <TextBlock Text="•  Explorar Windows" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Config. Impresora" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Consistencia" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Backup" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Caja Chica" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Límite de Crédito" Style="{StaticResource StyleItemLista}"/>
+                                <TextBlock Text="•  Ayuda Sistema" Style="{StaticResource StyleItemLista}" Margin="0"/>
+                            </StackPanel>
+                            <TextBlock Text="Abrir módulo &gt;" Foreground="{StaticResource CorLink}" FontSize="11"
+                                       Margin="14,0,0,14" Cursor="Hand" MouseLeftButtonUp="AbrirModulo_Click" Tag="Utilitarios"/>
+                        </StackPanel>
+                    </Border>
+
+                </UniformGrid>
+
+                <!-- ===================== MÉTRICAS RÁPIDAS ===================== -->
+                <UniformGrid Columns="4" Rows="1" Margin="0,16,0,0">
+
+                    <Border Background="White" CornerRadius="8" Effect="{StaticResource SombraCard}" Margin="0,0,12,0" Padding="16,14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE9D9;" FontFamily="Segoe MDL2 Assets" FontSize="22" Foreground="{StaticResource CorLink}" VerticalAlignment="Center"/>
+                            <StackPanel Margin="12,0,0,0">
+                                <TextBlock Text="S/ 3.240" FontSize="18" FontWeight="Bold" Foreground="{StaticResource CorLink}"/>
+                                <TextBlock Text="Ventas hoy" FontSize="11" Foreground="{StaticResource CorSubtitulo}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="White" CornerRadius="8" Effect="{StaticResource SombraCard}" Margin="0,0,12,0" Padding="16,14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE77B;" FontFamily="Segoe MDL2 Assets" FontSize="22" Foreground="{StaticResource CorTitulo}" VerticalAlignment="Center"/>
+                            <StackPanel Margin="12,0,0,0">
+                                <TextBlock Text="312" FontSize="18" FontWeight="Bold" Foreground="{StaticResource CorTitulo}"/>
+                                <TextBlock Text="Comensales" FontSize="11" Foreground="{StaticResource CorSubtitulo}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="White" CornerRadius="8" Effect="{StaticResource SombraCard}" Margin="0,0,12,0" Padding="16,14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE8C7;" FontFamily="Segoe MDL2 Assets" FontSize="22" Foreground="#D6A62E" VerticalAlignment="Center"/>
+                            <StackPanel Margin="12,0,0,0">
+                                <TextBlock Text="S/ 250" FontSize="18" FontWeight="Bold" Foreground="#D6A62E"/>
+                                <TextBlock Text="Caja Chica" FontSize="11" Foreground="{StaticResource CorSubtitulo}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="White" CornerRadius="8" Effect="{StaticResource SombraCard}" Padding="16,14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE9F9;" FontFamily="Segoe MDL2 Assets" FontSize="22" Foreground="{StaticResource CorTitulo}" VerticalAlignment="Center"/>
+                            <StackPanel Margin="12,0,0,0">
+                                <TextBlock Text="S/ 1.180" FontSize="18" FontWeight="Bold" Foreground="{StaticResource CorTitulo}"/>
+                                <TextBlock Text="Liquidación" FontSize="11" Foreground="{StaticResource CorSubtitulo}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                </UniformGrid>
+
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</Window>

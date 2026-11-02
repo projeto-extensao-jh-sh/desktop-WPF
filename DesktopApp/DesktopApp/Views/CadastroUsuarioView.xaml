@@ -1,0 +1,91 @@
+<Window x:Class="DesktopApp.Views.CadastroUsuarioView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cadastro de usuário"
+        Width="760"
+        Height="560"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#F0EFEE">
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#2E2A4A"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+        <Style x:Key="InputStyle" TargetType="Control">
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="Margin" Value="0,0,0,18"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="#D8D6D4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="72"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#8C2A2A" Padding="28,0">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Cadastro de usuário" Foreground="White" FontSize="20" FontWeight="Bold"/>
+                <TextBlock Text="Preencha os dados para cadastrar um novo acesso" Foreground="#F0D9D9" FontSize="11" Margin="0,3,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="28,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Nome completo" Style="{StaticResource LabelStyle}"/>
+                    <TextBox x:Name="txtNome" Style="{StaticResource InputStyle}"/>
+
+                    <TextBlock Text="Usuário / login" Style="{StaticResource LabelStyle}"/>
+                    <TextBox x:Name="txtLogin" Style="{StaticResource InputStyle}"/>
+
+                    <TextBlock Text="Perfil de acesso" Style="{StaticResource LabelStyle}"/>
+                    <ComboBox x:Name="cmbPerfil" Style="{StaticResource InputStyle}" SelectedIndex="0">
+                        <ComboBoxItem Content="Administrador"/>
+                        <ComboBoxItem Content="Vendedor"/>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <TextBlock Text="Filial" Style="{StaticResource LabelStyle}"/>
+                    <ComboBox x:Name="cmbFilial" Style="{StaticResource InputStyle}" SelectedIndex="0">
+                        <ComboBoxItem Content="Todas as filiais"/>
+                        <ComboBoxItem Content="Filial Centro"/>
+                        <ComboBoxItem Content="Filial Norte"/>
+                        <ComboBoxItem Content="Filial Sul"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Senha" Style="{StaticResource LabelStyle}"/>
+                    <PasswordBox x:Name="txtSenha" Style="{StaticResource InputStyle}"/>
+
+                    <TextBlock Text="Confirmar senha" Style="{StaticResource LabelStyle}"/>
+                    <PasswordBox x:Name="txtConfirmarSenha" Style="{StaticResource InputStyle}"/>
+
+                    <TextBlock x:Name="txtMensagem" FontSize="11" TextWrapping="Wrap" Foreground="#B3261E"/>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <Border Grid.Row="2" Background="White" BorderBrush="#E1DEDC" BorderThickness="0,1,0,0" Padding="28,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                <Button Content="Cancelar" Width="100" Height="34" Margin="0,0,10,0" Background="Transparent" BorderBrush="#B5B1AF" Click="Cancelar_Click"/>
+                <Button Content="Salvar usuário" Width="130" Height="34" Background="#D62E2E" Foreground="White" BorderThickness="0" Click="Salvar_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

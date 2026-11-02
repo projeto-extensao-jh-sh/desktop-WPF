@@ -1,0 +1,28 @@
+﻿<Application x:Class="DesktopApp.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:DesktopApp">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/AknStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="StyleButtonQuestion" TargetType="{x:Type Button}" BasedOn="{StaticResource StyleButtonQuestionXAML}">
+                <EventSetter Event="Click" Handler="Click_QuestionButton"/>
+            </Style>
+
+
+            <Style x:Key="StyleWindow" TargetType="{x:Type Window}" BasedOn="{StaticResource StyleWindowXAML}">
+                <EventSetter Event="MouseDown" Handler="Window_MouseDown"/>
+            </Style>
+
+
+            <Thickness x:Key="MarginDocumentType">10,0,0,0</Thickness>
+            <Thickness x:Key="MarginStackPanel">0,10,0,0</Thickness>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

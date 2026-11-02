@@ -1,0 +1,285 @@
+﻿<Window x:Class="DesktopApp.View.VentasView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="WindowStart" Title="Ventas" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Topmost="True" Height="640" Width="960"
+        Style="{DynamicResource StyleWindow}" Template="{DynamicResource TemplateWindow_AKN}">
+
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="CorFundo" Color="#F0EFEE"/>
+        <SolidColorBrush x:Key="CorTitulo" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorSubtitulo" Color="#8C8C99"/>
+        <SolidColorBrush x:Key="CorLink" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorAvatar" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorBreadcrumbAtivo" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorBreadcrumbLink" Color="#8C8C99"/>
+        <SolidColorBrush x:Key="CorCategoria" Color="#8C8C99"/>
+        <SolidColorBrush x:Key="CorPreco" Color="#D62E2E"/>
+
+        <DropShadowEffect x:Key="SombraCard" BlurRadius="10" ShadowDepth="1" Opacity="0.10" Color="Black"/>
+
+        <Style x:Key="StyleLinkBreadcrumb" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource CorBreadcrumbLink}"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <!-- Botão de seta do carrossel (circular) -->
+        <Style x:Key="StyleSetaCarrossel" TargetType="Button">
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="{StaticResource CorTitulo}"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="White" CornerRadius="19" Effect="{StaticResource SombraCard}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FBEAEA"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Card de receita -->
+        <Style x:Key="StyleCardReceita" TargetType="Border">
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="0,0,16,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Effect" Value="{StaticResource SombraCard}"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Background="{StaticResource CorFundo}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ===================== CABEÇALHO (BARRA VERMELHA) ===================== -->
+        <Border Grid.Row="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Color="#7A1F1F" Offset="0"/>
+                    <GradientStop Color="#B23A3A" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid Margin="24,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Border Background="White" CornerRadius="8" Width="34" Height="34">
+                        <Image Source="/Resources/logo.png" Width="22" Height="22"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center" Margin="10,0,0,0">
+                        <TextBlock Text="LM Foods" Foreground="White" FontWeight="Bold" FontSize="14"/>
+                        <TextBlock Text="CONTROL DE COMEDOR" Foreground="#F0D9D9" FontSize="8" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock x:Name="txtRelogio" Text="00:34:17" Foreground="White" FontWeight="Bold"
+                               FontSize="15" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="txtData" Text="Domingo, 26 De Julio De 2026" Foreground="#F0D9D9"
+                               FontSize="10" HorizontalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right">
+                        <TextBlock x:Name="txtNomeUsuario" Text="Ana Carvalho" Foreground="White"
+                                   FontWeight="SemiBold" FontSize="12" HorizontalAlignment="Right"/>
+                        <TextBlock x:Name="txtCargoUsuario" Text="Gerente Geral" Foreground="#F0D9D9"
+                                   FontSize="10" HorizontalAlignment="Right"/>
+                    </StackPanel>
+
+                    <Border Background="{StaticResource CorAvatar}" CornerRadius="8" Width="30" Height="30">
+                        <TextBlock x:Name="txtIniciais" Text="AC" Foreground="White" FontWeight="Bold" FontSize="12"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+
+                    <Button x:Name="btnSair" Click="btnSair_Click" Background="Transparent" BorderThickness="0"
+                            Cursor="Hand" Margin="14,0,0,0" Padding="0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="&#xE7E8;" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="13" VerticalAlignment="Center"/>
+                            <TextBlock Text=" Salir" Foreground="White" FontSize="12" VerticalAlignment="Center" Margin="4,0,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ===================== CONTEÚDO ===================== -->
+        <StackPanel Grid.Row="1" Margin="24,16,24,24">
+
+            <!-- Breadcrumb -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Inicio" Style="{StaticResource StyleLinkBreadcrumb}" MouseLeftButtonUp="BreadcrumbInicio_Click"/>
+                <TextBlock Text="  ›  " FontSize="11" Foreground="{StaticResource CorBreadcrumbLink}"/>
+                <TextBlock Text="Ventas" Style="{StaticResource StyleLinkBreadcrumb}" MouseLeftButtonUp="BreadcrumbInicio_Click"/>
+                <TextBlock Text="  ›  " FontSize="11" Foreground="{StaticResource CorBreadcrumbLink}"/>
+                <TextBlock Text="Registro" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource CorBreadcrumbAtivo}"/>
+            </StackPanel>
+
+            <TextBlock Text="Registro de Venta" FontSize="22" FontWeight="Bold" Foreground="{StaticResource CorTitulo}"/>
+            <TextBlock Text="Seleccione una receta para iniciar el pedido" FontSize="12"
+                       Foreground="{StaticResource CorSubtitulo}" Margin="0,2,0,18"/>
+
+            <!-- ===================== CARROSSEL ===================== -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Style="{StaticResource StyleSetaCarrossel}" Content="&#8249;"
+                        Click="BtnScrollEsquerda_Click" Margin="0,0,10,0" VerticalAlignment="Center"/>
+
+                <ScrollViewer x:Name="carrossel" Grid.Column="1" HorizontalScrollBarVisibility="Hidden"
+                              VerticalScrollBarVisibility="Disabled" PanningMode="HorizontalOnly">
+                    <StackPanel Orientation="Horizontal" x:Name="painelReceitas">
+
+                        <!-- Receita: Lomo Saltado -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Lomo Saltado" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/lomo_saltado.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Lomo Saltado" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Fondos" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 18.50" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+
+                        <!-- Receita: Ceviche Mixto -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Ceviche Mixto" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/ceviche_mixto.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Ceviche Mixto" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Entradas" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 22.00" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Receita: Ají de Gallina -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Ají de Gallina" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/aji_de_gallina.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Ají de Gallina" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Fondos" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 16.00" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Receita: Arroz con Pollo -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Arroz con Pollo" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/arroz_con_pollo.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Arroz con Pollo" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Fondos" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 15.00" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Receita: Causa Limeña -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Causa Limeña" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/causa_limena.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Causa Limeña" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Entradas" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 14.00" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Receita: Anticuchos -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Anticuchos" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/anticuchos.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Anticuchos" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Parrilla" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 12.50" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Receita: Chicharrón de Pescado -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Chicharrón de Pescado" MouseLeftButtonUp="Receita_Click">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/chicharron_pescado.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Chicharrón de Pescado" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}" TextWrapping="Wrap"/>
+                                    <TextBlock Text="Fondos" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 19.00" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Receita: Tacu Tacu -->
+                        <Border Style="{StaticResource StyleCardReceita}" Tag="Tacu Tacu" MouseLeftButtonUp="Receita_Click" Margin="0,0,0,4">
+                            <StackPanel>
+                                <Border CornerRadius="10,10,0,0" ClipToBounds="True">
+                                    <Image Source="/Resources/Recetas/tacu_tacu.jpg" Height="120" Stretch="UniformToFill"/>
+                                </Border>
+                                <StackPanel Margin="12,10,12,12">
+                                    <TextBlock Text="Tacu Tacu" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorTitulo}"/>
+                                    <TextBlock Text="Fondos" FontSize="11" Foreground="{StaticResource CorCategoria}" Margin="0,2,0,6"/>
+                                    <TextBlock Text="S/ 17.00" FontWeight="Bold" FontSize="13" Foreground="{StaticResource CorPreco}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
+
+                <Button Grid.Column="2" Style="{StaticResource StyleSetaCarrossel}" Content="&#8250;"
+                        Click="BtnScrollDireita_Click" Margin="10,0,0,0" VerticalAlignment="Center"/>
+
+            </Grid>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

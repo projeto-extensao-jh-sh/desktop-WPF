@@ -1,0 +1,159 @@
+<Window x:Class="DesktopApp.View.LoginPinView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="WindowStart" Title="Login" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Topmost="True" Height="460" Width="900"
+        Style="{DynamicResource StyleWindow}" Template="{DynamicResource TemplateWindow_AKN}">
+
+    <Window.Resources>
+
+        <SolidColorBrush x:Key="CorFundoDireita" Color="#F5F4F3"/>
+        <SolidColorBrush x:Key="CorTituloDireita" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorSubtitulo" Color="#8C8C99"/>
+        <SolidColorBrush x:Key="CorAvatar" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorNomeUsuario" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorCargoUsuario" Color="#6C8FC7"/>
+        <SolidColorBrush x:Key="CorDotAtivo" Color="#B23A3A"/>
+        <SolidColorBrush x:Key="CorDotInativo" Color="#E0DEDD"/>
+        <SolidColorBrush x:Key="CorTeclaFundo" Color="White"/>
+        <SolidColorBrush x:Key="CorTeclaTexto" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorTeclaDesabilitada" Color="#B7B7BF"/>
+        <SolidColorBrush x:Key="CorErro" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorSucesso" Color="#2FAE60"/>
+
+        <DropShadowEffect x:Key="SombraCard" BlurRadius="10" ShadowDepth="1" Opacity="0.10" Color="Black"/>
+
+        <!-- Estilo das teclas do teclado numérico -->
+        <Style x:Key="StyleTecla" TargetType="Button">
+            <Setter Property="Width" Value="72"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="Margin" Value="6"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource CorTeclaTexto}"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{StaticResource CorTeclaFundo}" CornerRadius="8"
+                                BorderThickness="1" BorderBrush="Transparent" Effect="{StaticResource SombraCard}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FBEAEA"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CorErro}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Foreground" Value="{StaticResource CorTeclaDesabilitada}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo do link "Cambiar usuario" / "Contacte al administrador" -->
+        <Style x:Key="StyleLink" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource CorSubtitulo}"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ===================== PAINEL ESQUERDO (VERMELHO) ===================== -->
+        <Border Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#7A1F1F" Offset="0"/>
+                    <GradientStop Color="#B23A3A" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <Image Source="/Resources/logo.png" Height="48"
+                       HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,26,0,0"/>
+
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="28,90,20,0">
+                    <TextBlock Text="Bienvenido!" Foreground="White" FontWeight="Bold" FontSize="26"/>
+                    <TextBlock x:Name="txtRelogio" Text="00:33:48" Foreground="White" FontWeight="Bold" FontSize="20" Margin="0,14,0,0"/>
+                    <TextBlock x:Name="txtData" Text="Domingo, 26 De Julio De 2026" Foreground="#F0D9D9" FontSize="11" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ===================== PAINEL DIREITO (SENHA / PIN) ===================== -->
+        <Grid Grid.Column="1" Background="{StaticResource CorFundoDireita}">
+
+            <!-- Cambiar usuario -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,32,0,0">
+                <Button x:Name="btnCambiarUsuario" Click="btnCambiarUsuario_Click"
+                        Background="Transparent" BorderThickness="0" Cursor="Hand" Padding="0">
+                    <TextBlock Text="&lt; Cambiar usuario" Style="{StaticResource StyleLink}"/>
+                </Button>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="320">
+
+                <!-- Avatar / nome / cargo -->
+                <Border Background="{StaticResource CorAvatar}" CornerRadius="10" Width="52" Height="52" HorizontalAlignment="Center">
+                    <TextBlock x:Name="txtIniciais" Text="AC" Foreground="White" FontWeight="Bold" FontSize="16"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <TextBlock x:Name="txtNomeUsuario" Text="Ana Carvalho" FontWeight="Bold" FontSize="14"
+                           Foreground="{StaticResource CorNomeUsuario}" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                <TextBlock x:Name="txtCargoUsuario" Text="Gerente Geral" FontSize="11"
+                           Foreground="{StaticResource CorCargoUsuario}" HorizontalAlignment="Center" Margin="0,2,0,0"/>
+
+                <!-- Bolinhas de progresso da senha -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
+                    <Ellipse x:Name="dot1" Width="12" Height="12" Margin="4" Fill="{StaticResource CorDotInativo}"/>
+                    <Ellipse x:Name="dot2" Width="12" Height="12" Margin="4" Fill="{StaticResource CorDotInativo}"/>
+                    <Ellipse x:Name="dot3" Width="12" Height="12" Margin="4" Fill="{StaticResource CorDotInativo}"/>
+                    <Ellipse x:Name="dot4" Width="12" Height="12" Margin="4" Fill="{StaticResource CorDotInativo}"/>
+                </StackPanel>
+
+                <TextBlock x:Name="txtInstrucao" Text="Ingrese su clave de 4 dígitos" FontSize="11"
+                           Foreground="{StaticResource CorSubtitulo}" HorizontalAlignment="Center" Margin="0,8,0,18"/>
+
+                <!-- Teclado numérico -->
+                <UniformGrid x:Name="teclado" Columns="3" HorizontalAlignment="Center">
+                    <Button Content="1" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="1"/>
+                    <Button Content="2" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="2"/>
+                    <Button Content="3" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="3"/>
+
+                    <Button Content="4" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="4"/>
+                    <Button Content="5" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="5"/>
+                    <Button Content="6" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="6"/>
+
+                    <Button Content="7" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="7"/>
+                    <Button Content="8" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="8"/>
+                    <Button Content="9" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="9"/>
+
+                    <Button Content="C" Style="{StaticResource StyleTecla}" Click="BtnLimpar_Click"/>
+                    <Button Content="0" Style="{StaticResource StyleTecla}" Click="BtnNumero_Click" Tag="0"/>
+                    <Button Content="&#xE750;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource StyleTecla}" Click="BtnApagar_Click"/>
+                </UniformGrid>
+
+                <!-- Esqueceu a senha -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
+                    <TextBlock Text="¿Olvidó su clave? " FontSize="11" Foreground="{StaticResource CorSubtitulo}"/>
+                    <TextBlock Text="Contacte al administrador" FontSize="11" Foreground="{StaticResource CorErro}"
+                               TextDecorations="Underline" Cursor="Hand" MouseLeftButtonUp="LinkAdministrador_Click"/>
+                </StackPanel>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>

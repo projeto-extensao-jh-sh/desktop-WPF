@@ -1,0 +1,155 @@
+﻿<Window x:Class="DesktopApp.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        x:Name="WindowStart" Title="Login" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Topmost="True" Height="460" Width="900"
+        Style="{DynamicResource StyleWindow}" Template="{DynamicResource TemplateWindow_AKN}">
+
+    <Window.Resources>
+
+        <!-- Cores usadas no design -->
+        <SolidColorBrush x:Key="CorVermelhoEscuro" Color="#7A1F1F"/>
+        <SolidColorBrush x:Key="CorVermelhoClaro" Color="#B23A3A"/>
+        <SolidColorBrush x:Key="CorFundoDireita" Color="#F5F4F3"/>
+        <SolidColorBrush x:Key="CorTituloDireita" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorSubtitulo" Color="#8C8C99"/>
+        <SolidColorBrush x:Key="CorAvatar" Color="#D62E2E"/>
+        <SolidColorBrush x:Key="CorNomeUsuario" Color="#2E2A4A"/>
+        <SolidColorBrush x:Key="CorCargoUsuario" Color="#9A9AA5"/>
+        <SolidColorBrush x:Key="CorSeta" Color="#D62E2E"/>
+
+        <!-- Sombra suave para os cards -->
+        <DropShadowEffect x:Key="SombraCard" BlurRadius="12" ShadowDepth="1" Opacity="0.12" Color="Black"/>
+
+        <!-- Estilo do card de usuário (Button para permitir clique/Command) -->
+        <Style x:Key="StyleCardUsuario" TargetType="Button">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="0,0,0,14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="White" CornerRadius="10" Padding="16,12" Effect="{StaticResource SombraCard}">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#FFFBFA"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ===================== PAINEL ESQUERDO (VERMELHO) ===================== -->
+        <Border Grid.Column="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#7A1F1F" Offset="0"/>
+                    <GradientStop Color="#B23A3A" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <Grid>
+                <!-- Logo -->
+                <Border Background="White" CornerRadius="5" Width="189" Height="53"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,37,0,0">
+                    <Image Source="/Resources/logo.png" Width="169" Height="57"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="82,32,0,0"/>
+
+                <!-- Boas-vindas / relógio -->
+                <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" Margin="28,90,20,0">
+                    <TextBlock Text="Bienvenido!" Foreground="White" FontWeight="Bold" FontSize="26"/>
+                    <TextBlock x:Name="txtRelogio" Text="00:33:20" Foreground="White" FontWeight="Bold" FontSize="20" Margin="0,14,0,0"/>
+                    <TextBlock x:Name="txtData" Text="Domingo, 26 De Julio De 2026" Foreground="#F0D9D9" FontSize="11" Margin="0,2,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- ===================== PAINEL DIREITO (SELEÇÃO DE USUÁRIO) ===================== -->
+        <Grid Grid.Column="1" Background="{StaticResource CorFundoDireita}">
+
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="340">
+
+                <!-- Título -->
+                <TextBlock Text="Seleccione su usuario" FontSize="20" FontWeight="Bold"
+                           Foreground="{StaticResource CorTituloDireita}" HorizontalAlignment="Center"/>
+                <TextBlock Text="Luego ingrese su clave de acceso" FontSize="12"
+                           Foreground="{StaticResource CorSubtitulo}" HorizontalAlignment="Center" Margin="0,4,0,24"/>
+
+                <!-- Lista de usuários -->
+                <ItemsControl x:Name="listaUsuarios">
+                    <ItemsControl.Items>
+
+                        <!-- Card: Ana Carvalho -->
+                        <Button Style="{StaticResource StyleCardUsuario}" Click="BtnUsuario_Click"
+        Tag="AnaCarvalho|Ana Carvalho|Gerente Geral|AC">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Background="{StaticResource CorAvatar}" CornerRadius="8" Width="38" Height="38">
+                                    <TextBlock Text="AC" Foreground="White" FontWeight="Bold" FontSize="13"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="12,0,0,0">
+                                    <TextBlock Text="Ana Carvalho" FontWeight="SemiBold" FontSize="13" Foreground="{StaticResource CorNomeUsuario}"/>
+                                    <TextBlock Text="Gerente Geral" FontSize="11" Foreground="{StaticResource CorCargoUsuario}"/>
+                                </StackPanel>
+
+                                <TextBlock Grid.Column="2" Text="&gt;" FontSize="16" FontWeight="Bold"
+                                           Foreground="{StaticResource CorSeta}" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
+                        <!-- Card: Lucas Ferreira -->
+                        <Button Style="{StaticResource StyleCardUsuario}" Click="BtnUsuario_Click"
+        Tag="LucasFerreira|Lucas Ferreira|Vendedor|LF">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" Background="{StaticResource CorAvatar}" CornerRadius="8" Width="38" Height="38">
+                                    <TextBlock Text="LF" Foreground="White" FontWeight="Bold" FontSize="13"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="12,0,0,0">
+                                    <TextBlock Text="Lucas Ferreira" FontWeight="SemiBold" FontSize="13" Foreground="{StaticResource CorNomeUsuario}"/>
+                                    <TextBlock Text="Vendedor" FontSize="11" Foreground="{StaticResource CorCargoUsuario}"/>
+                                </StackPanel>
+
+                                <TextBlock Grid.Column="2" Text="&gt;" FontSize="16" FontWeight="Bold"
+                                           Foreground="{StaticResource CorSeta}" VerticalAlignment="Center"/>
+                            </Grid>
+                        </Button>
+
+                    </ItemsControl.Items>
+                </ItemsControl>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</Window>

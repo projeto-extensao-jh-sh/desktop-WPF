@@ -1,0 +1,1282 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:System="clr-namespace:System;assembly=mscorlib">
+
+    <SolidColorBrush x:Key="CorBlack" Color="Black" />
+    <SolidColorBrush x:Key="CorWhite" Color="White" />
+    <SolidColorBrush x:Key="CorBlueLight" Color="#3BD1E8" />
+    <SolidColorBrush x:Key="CorBlueSkyLight" Color="#FFBDE6BE" />
+    <SolidColorBrush x:Key="CorBlue" Color="#FF042271" />
+    <SolidColorBrush x:Key="CorGreenLight" Color="#40EF79" />
+    <SolidColorBrush x:Key="CorRedLight" Color="#FFF05951" />
+    <SolidColorBrush x:Key="CorGray" Color="#888888" />
+    <SolidColorBrush x:Key="CorGrayLight" Color="#FFCDCDCD" />
+    <SolidColorBrush x:Key="CorGrayLightMidle" Color="#F0F0F0" />
+    <SolidColorBrush x:Key="CorCream" Color="#CDCDCD" />
+    <SolidColorBrush x:Key="CorOrange" Color="#FFE89A3B" />
+    <SolidColorBrush x:Key="CorTransparent" Color="Transparent" />
+    <SolidColorBrush x:Key="CorYellow" Color="#FFCC49" />
+    <SolidColorBrush x:Key="CorRed500" Color="#ef4444" />
+    <!--Normal-->
+    <SolidColorBrush x:Key="CorRed600" Color="#dc2626" />
+    <!--Houver-->
+    <SolidColorBrush x:Key="CorRed700" Color="#b91c1c" />
+    <!--Pressed-->
+    <SolidColorBrush x:Key="CorGreen500" Color="#22c55e " />
+    <!--Normal-->
+    <SolidColorBrush x:Key="CorGreen600" Color="#16a34a " />
+    <!--Houver-->
+    <SolidColorBrush x:Key="CorGreen700" Color="#15803d" />
+    <!--Pressed-->
+    <SolidColorBrush x:Key="CorAmbar500" Color="#f59e0b"/>
+    <!--Normal-->
+    <SolidColorBrush x:Key="CorAmbar600" Color="#d97706"/>
+    <!--Houver-->
+    <SolidColorBrush x:Key="CorAmbar700" Color="#b45309"/>
+    <!--Pressed-->
+    <SolidColorBrush x:Key="CorBlue500" Color="#3b82f6"/>
+    <!--Normal-->
+    <SolidColorBrush x:Key="CorBlue600" Color="#2563eb"/>
+    <!--Houver-->
+    <SolidColorBrush x:Key="CorBlue700" Color="#1d4ed8"/>
+    <!--Pressed-->
+
+
+    <Color x:Key="CorBlueSkyLightColor">#FFBDE6BE</Color>
+
+
+    <System:Double x:Key="ControlsHeight">34</System:Double>
+    <System:Double x:Key="ButtonFolderHeight">39</System:Double>
+    <System:Double x:Key="ButtonsWidth">120</System:Double>
+    <System:Double x:Key="ButtonsHeight">35</System:Double>
+
+    <!--#region Styles Padrões para os botões-->
+    <Style x:Key="StyleDefaultButton">
+        <Setter Property="Control.Foreground" Value="{StaticResource CorBlack}" />
+        <Setter Property="Control.BorderBrush" Value="{StaticResource CorGreenLight}" />
+        <Setter Property="Control.FontSize" Value="12" />
+        <Setter Property="Control.Width" Value="120" />
+        <Setter Property="Control.Height" Value="{StaticResource ControlsHeight}" />
+        <Style.Triggers>
+            <Trigger Property="Control.IsMouseOver" Value="True">
+                <Setter Property="Control.Foreground" Value="{StaticResource CorBlack}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Clear-->
+    <Style
+        x:Key="StyleButtonClear"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorWhite}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        Cursor="Hand"
+                        SnapsToDevicePixels="true">
+                        <ContentPresenter
+                            x:Name="contentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Foreground" Value="{StaticResource CorBlack}"/>-->
+                <Setter Property="Background" Value="{StaticResource CorGreenLight}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style Button Clear-->
+    <Style
+        x:Key="StyleButtonClearImage"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorWhite}" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="100" />
+        <Setter Property="Height" Value="100" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        Cursor="Hand"
+                        SnapsToDevicePixels="true">
+                        <ContentPresenter
+                            x:Name="contentPresenter"
+                            Margin="{TemplateBinding Padding}"
+                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                            Focusable="False"
+                            RecognizesAccessKey="True"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Foreground" Value="{StaticResource CorBlack}"/>-->
+                <Setter Property="Background" Value="{StaticResource CorGreenLight}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button New / Criar / Aplicar-->
+    <Style
+        x:Key="StyleButtonOk"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorGreenLight}" />
+        <Setter Property="Width" Value="{StaticResource ButtonsWidth}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        Cursor="Hand">
+                        <Grid Width="110">
+                            <TextBlock
+                                Height="20"
+                                Margin="5,2,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding Content}" />
+                            <TextBlock
+                                Margin="0,0,5,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="Kanit Medium"
+                                FontSize="20"
+                                Text="→" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Foreground" Value="{StaticResource CorBlack}"/>-->
+                <Setter Property="Background" Value="{StaticResource CorWhite}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Adicionar-->
+    <Style
+        x:Key="StyleButtonAdd"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorWhite}" />
+        <Setter Property="Width" Value="{StaticResource ButtonsWidth}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        Cursor="Hand">
+                        <Grid Width="120">
+                            <TextBlock
+                                Height="20"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding Content}" />
+                            <TextBlock
+                                Margin="0,0,10,8"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="GOST Common"
+                                FontSize="30"
+                                Text="+" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Foreground" Value="{StaticResource CorBlack}"/>-->
+                <Setter Property="Background" Value="{StaticResource CorGreenLight}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Adicionar Circular-->
+    <Style
+        x:Key="StyleButtonAddCircular"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorWhite}" />
+        <Setter Property="Width" Value="35" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="17.5"
+                        Cursor="Hand">
+                        <Grid>
+                            <TextBlock
+                                Height="20"
+                                Margin="0,0,0,6"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="Arial"
+                                FontSize="22"
+                                Foreground="{TemplateBinding Foreground}"
+                                Text="+" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <!--<Setter Property="Foreground" Value="{StaticResource CorBlack}"/>-->
+                <Setter Property="Background" Value="{StaticResource CorGreenLight}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Cancelar-->
+    <Style
+        x:Key="StyleButtonCancel"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorTransparent}" />
+        <Setter Property="Foreground" Value="{StaticResource CorRedLight}" />
+        <Setter Property="BorderBrush" Value="{StaticResource CorRedLight}" />
+        <Setter Property="Width" Value="{StaticResource ButtonsWidth}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        Cursor="Hand">
+                        <Grid Width="115">
+                            <TextBlock
+                                Height="20"
+                                Margin="5,2,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding Content}" />
+                            <TextBlock
+                                Margin="0,0,-10,5"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="GOST Common"
+                                FontSize="30"
+                                Text="+">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <RotateTransform Angle="45" />
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource CorWhite}" />
+                <Setter Property="Background" Value="{StaticResource CorRedLight}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Parametros-->
+    <Style
+        x:Key="StyleButtonParametros"
+        BasedOn="{StaticResource StyleDefaultButton}"
+        TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{StaticResource CorYellow}" />
+        <Setter Property="Foreground" Value="{StaticResource CorBlack}" />
+        <Setter Property="BorderBrush" Value="{StaticResource CorYellow}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        Cursor="Hand">
+                        <Grid Width="125">
+                            <TextBlock
+                                Height="20"
+                                Margin="5,2,0,0"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Text="{TemplateBinding Content}" />
+                            <TextBlock
+                                Margin="0,0,10,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontFamily="GOST Common"
+                                FontSize="15"
+                                Text="{TemplateBinding Tag}" />
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource CorWhite}" />
+                <Setter Property="Background" Value="{StaticResource CorYellow}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Remove-->
+    <ImageBrush
+        x:Key="Button.Static.Background_Remove"
+        ImageSource="/Resources/remove.png"
+        Stretch="UniformToFill" />
+    <ImageBrush
+        x:Key="Button.MouseOver.Background_Remove"
+        ImageSource="/Resources/remove_select.png"
+        Stretch="UniformToFill" />
+    <Style x:Key="StyleButtonRemove" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background_Remove}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Height" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border1" Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border1" Property="Background" Value="{StaticResource Button.MouseOver.Background_Remove}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Folder-->
+    <ImageBrush
+        x:Key="Button.Static.Background_Folder"
+        ImageSource="/Resources/folder.png"
+        Stretch="UniformToFill" />
+    <ImageBrush
+        x:Key="Button.MouseOver.Background_Folder"
+        ImageSource="/Resources/folder_select.png"
+        Stretch="UniformToFill" />
+    <Style x:Key="StyleButtonFolder" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background_Folder}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Height" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border1" Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border1" Property="Background" Value="{StaticResource Button.MouseOver.Background_Folder}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Label-->
+    <Style x:Key="StyleLabel" TargetType="{x:Type Label}">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background" Value="{StaticResource CorTransparent}" />
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style TextBlock-->
+    <Style x:Key="StyleTextBlock" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Background" Value="{StaticResource CorTransparent}" />
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style PasswordBox-->
+    <Style x:Key="StylePasswordCustomBackground" TargetType="{x:Type PasswordBox}">
+        <Setter Property="Height" Value="{StaticResource ControlsHeight}" />
+        <Setter Property="PasswordChar" Value="*" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{StaticResource CorGrayLight}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Background="{StaticResource CorTransparent}"
+                                FontWeight="Bold"
+                                Text="{TemplateBinding TextBox.Tag}" />
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Margin="5,0,5,0"
+                                VerticalAlignment="Center"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style TextBox-->
+    <Style x:Key="StyleTextBoxReadOnly" TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="{StaticResource ControlsHeight}" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border
+                        x:Name="border"
+                        Background="{StaticResource CorGrayLightMidle}"
+                        BorderBrush="{StaticResource CorGrayLight}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Background="{StaticResource CorTransparent}"
+                                FontWeight="Bold"
+                                Text="{TemplateBinding TextBox.Tag}" />
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Margin="5,0,5,0"
+                                VerticalAlignment="Center"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style TextBox CustomBackground-->
+    <Style x:Key="StyleTextBoxCustomBackground" TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="{StaticResource ControlsHeight}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border
+                        x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{StaticResource CorGrayLight}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                Margin="5,0,0,0"
+                                VerticalAlignment="Center"
+                                Background="{StaticResource CorTransparent}"
+                                FontWeight="Bold"
+                                Text="{TemplateBinding TextBox.Tag}" />
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Margin="5,0,5,0"
+                                VerticalAlignment="Center"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style RadioButton-->
+    <Style x:Key="StyleRadioButton" TargetType="{x:Type RadioButton}">
+        <Setter Property="BorderBrush" Value="{StaticResource CorCream}" />
+        <Setter Property="Height" Value="17" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid Background="Transparent" SnapsToDevicePixels="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            x:Name="radioButtonBorder"
+                            Margin="1,1,1,1"
+                            BorderBrush="{StaticResource CorGrayLight}"
+                            BorderThickness="1"
+                            CornerRadius="100">
+                            <Grid x:Name="markGrid" Margin="2">
+                                <Ellipse
+                                    x:Name="optionMark"
+                                    MinWidth="9"
+                                    MinHeight="9"
+                                    Fill="{StaticResource CorBlueLight}"
+                                    Opacity="0" />
+                            </Grid>
+                        </Border>
+                        <ContentPresenter
+                            x:Name="contentPresenter"
+                            Grid.Column="1"
+                            Margin="1,1,0,0"
+                            Focusable="False"
+                            RecognizesAccessKey="True" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource CorGreenLight}" />
+                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="optionMark" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="optionMark" Property="Opacity" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style CheckBox-->
+    <Style x:Key="StyleCheckBox" TargetType="{x:Type CheckBox}">
+        <Setter Property="SnapsToDevicePixels" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Height" Value="17" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="CheckBox">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Border
+                                x:Name="Border"
+                                Width="16"
+                                Height="16"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="#CDCDCD"
+                                BorderThickness="1"
+                                ClipToBounds="True">
+                                <Path
+                                    x:Name="CheckMark"
+                                    Width="10"
+                                    Height="10"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Data="M 0 0 L 8 8 M 0 8 L 8 0"
+                                    Stretch="Fill"
+                                    Stroke="{StaticResource CorBlueLight}"
+                                    StrokeEndLineCap="Round"
+                                    StrokeStartLineCap="Round"
+                                    StrokeThickness="2" />
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <ContentPresenter
+                            Margin="4,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            RecognizesAccessKey="True" />
+                    </BulletDecorator>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="false">
+                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter Property="BorderBrush" Value="White" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="BorderBrush" Value="Gray" />
+                            <Setter TargetName="CheckMark" Property="Stroke" Value="Gray" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style RadioButton Images-->
+    <Style x:Key="StyleRadioButtonImages_AKN" TargetType="{x:Type RadioButton}">
+        <Setter Property="BorderBrush" Value="{StaticResource CorCream}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <Grid SnapsToDevicePixels="True">
+                        <StackPanel Height="75" Orientation="Horizontal">
+                            <Border
+                                x:Name="radioButtonBorder"
+                                Width="16"
+                                Height="16"
+                                Margin="0,-20,15,0"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="100">
+                                <Grid x:Name="markGrid">
+                                    <Ellipse
+                                        x:Name="optionMark"
+                                        Width="10"
+                                        Height="10"
+                                        Fill="{StaticResource CorBlueLight}" />
+                                </Grid>
+                            </Border>
+                            <StackPanel Orientation="Vertical">
+                                <Border
+                                    Width="60"
+                                    Height="50"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{StaticResource CorTransparent}"
+                                    BorderThickness="0" />
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Width="Auto"
+                                    Height="26"
+                                    Margin="0,5,0,0"
+                                    HorizontalAlignment="Center"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="radioButtonBorder" Property="BorderBrush" Value="{StaticResource CorYellow}" />
+                            <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource CorYellow}" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter TargetName="optionMark" Property="Opacity" Value="1" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter TargetName="optionMark" Property="Opacity" Value="0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region ControlTemplate ComboBox-->
+    <Style x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+        <Setter Property="Height" Value="37" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <!--  Corner Radius e cor da Borda  -->
+                    <!--<Border x:Name="templateRoot" Background="{TemplateBinding Background}" BorderBrush="{StaticResource CorCream}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true" CornerRadius="5" />-->
+                    <Border
+                        x:Name="templateRoot"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{StaticResource CorCream}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        SnapsToDevicePixels="true">
+                        <Border
+                            x:Name="splitBorder"
+                            Width="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"
+                            Margin="0"
+                            HorizontalAlignment="Right"
+                            BorderBrush="Transparent"
+                            BorderThickness="1"
+                            SnapsToDevicePixels="true">
+                            <Path
+                                x:Name="arrow"
+                                Margin="0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Data="F1 M 0,0 L 2.667,2.66665 L 5.3334,0 L 5.3334,-1.78168 L 2.6667,0.88501 L0,-1.78168 L0,0 Z"
+                                Fill="{StaticResource CorCream}" />
+                        </Border>
+                    </Border>
+                    <!--</Border>-->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="arrow" Property="Fill" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="TemplateComboBox" TargetType="{x:Type ComboBox}">
+        <Grid x:Name="templateRoot" SnapsToDevicePixels="true">
+            <Popup
+                Name="Popup"
+                AllowsTransparency="True"
+                Focusable="False"
+                IsOpen="{TemplateBinding IsDropDownOpen}"
+                Placement="Bottom"
+                PopupAnimation="Slide">
+                <Grid
+                    Name="DropDown"
+                    MinWidth="{TemplateBinding ActualWidth}"
+                    MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                    SnapsToDevicePixels="True">
+                    <Border
+                        x:Name="DropDownBorder"
+                        Padding="10,0,0,0"
+                        Background="{StaticResource CorWhite}"
+                        BorderBrush="{StaticResource CorGray}"
+                        BorderThickness="1"
+                        CornerRadius="5" />
+                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                    </ScrollViewer>
+                </Grid>
+            </Popup>
+            <ToggleButton
+                x:Name="toggleButton"
+                Grid.ColumnSpan="2"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                Style="{StaticResource ComboBoxToggleButton}" />
+            <ContentPresenter
+                x:Name="contentPresenter"
+                Margin="{TemplateBinding Padding}"
+                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                Content="{TemplateBinding SelectionBoxItem}"
+                ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                IsHitTestVisible="false"
+                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{StaticResource CorGreenLight}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="false">
+                <Setter Property="Foreground" Value="{StaticResource CorGray}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="StyleComboBox" TargetType="{x:Type ComboBox}">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="10,0,0,0" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Height" Value="37" />
+        <Setter Property="SelectedIndex" Value="0" />
+        <Setter Property="Template" Value="{StaticResource TemplateComboBox}" />
+    </Style>
+
+    <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border
+                        Name="Border"
+                        Padding="5"
+                        CornerRadius="3"
+                        SnapsToDevicePixels="true">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsHighlighted" Value="true">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource CorCream}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style Window, TitleBar e Button Question-->
+    <Style x:Key="StyleButtonQuestionXAML" TargetType="{x:Type Button}">
+        <!--<EventSetter Event="Click" Handler="Question_Click"/>-->
+        <Setter Property="Content" Value="?" />
+        <Setter Property="ToolTip" Value="Clique para obter informações de uso do Formulário" />
+        <Setter Property="Control.Foreground" Value="{StaticResource CorRedLight}" />
+        <Setter Property="Control.Background" Value="{StaticResource CorWhite}" />
+        <Setter Property="Control.BorderBrush" Value="{StaticResource CorWhite}" />
+        <Setter Property="Control.FontSize" Value="12" />
+        <Setter Property="Control.Height" Value="25" />
+        <Setter Property="Control.Width" Value="25" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="7">
+                        <TextBlock
+                            Height="{TemplateBinding Height}"
+                            Margin="8,5,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontFamily="Kanit"
+                            FontWeight="Bold"
+                            Text="{TemplateBinding Content}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Control.IsMouseOver" Value="True">
+                            <Setter Property="Control.Foreground" Value="{StaticResource CorWhite}" />
+                            <Setter Property="Control.Background" Value="{StaticResource CorRedLight}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StyleStackPanelTitleBar" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="ToolTip" Value="Clique para movimentar o formulário" />
+    </Style>
+
+
+    <Style x:Key="StyleWindowXAML" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{StaticResource CorTransparent}" />
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="AllowsTransparency" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="Icon" Value="/Resources/focco.ico" />
+        <Setter Property="Topmost" Value="True" />
+    </Style>
+
+    <ControlTemplate x:Key="TemplateWindow_AKN" TargetType="{x:Type Window}">
+        <Grid>
+            <Border
+                Background="{StaticResource CorWhite}"
+                BorderBrush="{DynamicResource CorCream}"
+                BorderThickness="1"
+                CornerRadius="8"
+                SnapsToDevicePixels="True" />
+            <StackPanel Style="{DynamicResource StyleStackPanelTitleBar}">
+                <Image
+                    Height="12"
+                    Margin="5,8,0,5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    SnapsToDevicePixels="True"
+                    Source="/Resources/c_sharp.png" />
+            </StackPanel>
+            <StackPanel
+                HorizontalAlignment="Center"
+                SnapsToDevicePixels="True"
+                Style="{DynamicResource StyleStackPanelTitleBar}">
+                <TextBlock
+                    VerticalAlignment="Bottom"
+                    FontFamily="Kanit"
+                    FontSize="16"
+                    Text="{TemplateBinding Title}" />
+            </StackPanel>
+            <AdornerDecorator>
+                <ContentPresenter />
+            </AdornerDecorator>
+        </Grid>
+    </ControlTemplate>
+    <!--#endregion-->
+
+
+    <!--#region Style TextBoxWithPlaceHolder Nome-->
+    <VisualBrush
+        x:Key="textPlaceHolderNome"
+        AlignmentX="Center"
+        Stretch="None"
+        TileMode="None">
+        <VisualBrush.Visual>
+            <TextBlock Foreground="{StaticResource CorGray}" Text="Insira o Parâmetro..." />
+        </VisualBrush.Visual>
+    </VisualBrush>
+
+
+    <Style
+        x:Key="StyleTextBoxWithPlaceHolderName"
+        BasedOn="{StaticResource StyleTextBoxReadOnly}"
+        TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="{StaticResource ControlsHeight}" />
+        <Setter Property="IsReadOnly" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border
+                        x:Name="border"
+                        Background="{StaticResource CorGrayLightMidle}"
+                        BorderBrush="{StaticResource CorGrayLight}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Padding="{TemplateBinding Padding}"
+                                VerticalAlignment="Center"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource textPlaceHolderNome}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource textPlaceHolderNome}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style TextBoxWithPlaceHolder Valor-->
+    <VisualBrush
+        x:Key="textPlaceHolderValor"
+        AlignmentX="Center"
+        Stretch="None"
+        TileMode="None">
+        <VisualBrush.Visual>
+            <TextBlock
+                Padding="10,0,0,0"
+                Foreground="{StaticResource CorGray}"
+                Text="Insira o Valor..." />
+        </VisualBrush.Visual>
+    </VisualBrush>
+
+
+    <Style
+        x:Key="StyleTextBoxWithPlaceHolderValor"
+        BasedOn="{StaticResource StyleTextBoxReadOnly}"
+        TargetType="{x:Type TextBox}">
+        <Setter Property="Height" Value="{StaticResource ControlsHeight}" />
+        <Setter Property="IsReadOnly" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border
+                        x:Name="border"
+                        Background="{StaticResource CorGrayLightMidle}"
+                        BorderBrush="{StaticResource CorGrayLight}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                        <StackPanel Orientation="Horizontal">
+                            <ScrollViewer
+                                x:Name="PART_ContentHost"
+                                Padding="{TemplateBinding Padding}"
+                                VerticalAlignment="Center"
+                                Focusable="false"
+                                HorizontalScrollBarVisibility="Hidden"
+                                VerticalScrollBarVisibility="Hidden" />
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CorGreenLight}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource textPlaceHolderValor}" />
+                        </Trigger>
+                        <Trigger Property="Text" Value="{x:Null}">
+                            <Setter TargetName="border" Property="Background" Value="{StaticResource textPlaceHolderValor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style ListView-->
+    <Style x:Key="StyleListView" TargetType="{x:Type ListView}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border
+                        Name="Bd"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        SnapsToDevicePixels="true">
+                        <ScrollViewer Padding="{TemplateBinding Padding}" Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+
+    <!--  #######################################################################################################################  -->
+    <!--  ##################################################### SOLID WORKS #####################################################  -->
+    <!--  #######################################################################################################################  -->
+    <!--#region Style Button SWPart-->
+    <ImageBrush
+        x:Key="Button.Static.Background_SWPart"
+        ImageSource="/Resources/sw_doc_part.png"
+        Stretch="UniformToFill" />
+    <ImageBrush
+        x:Key="Button.MouseOver.Background_SWPart"
+        ImageSource="/Resources/sw_doc_part_select.png"
+        Stretch="UniformToFill" />
+    <Style x:Key="StyleButtonSWPart" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background_SWPart}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Height" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border1" Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border1" Property="Background" Value="{StaticResource Button.MouseOver.Background_SWPart}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Settings-->
+    <ImageBrush
+        x:Key="Button.Static.Background_Settings"
+        ImageSource="/Resources/settings.png"
+        Stretch="UniformToFill" />
+    <ImageBrush
+        x:Key="Button.MouseOver.Background_Settings"
+        ImageSource="/Resources/settings_select.png"
+        Stretch="UniformToFill" />
+    <Style x:Key="StyleButtonSettings" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background_Settings}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Height" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border1" Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border1" Property="Background" Value="{StaticResource Button.MouseOver.Background_Settings}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+    <!--#region Style Button File TXT-->
+    <ImageBrush
+        x:Key="Button.Static.Background_FileTxt"
+        ImageSource="/Resources/file_txt.png"
+        Stretch="UniformToFill" />
+    <ImageBrush
+        x:Key="Button.MouseOver.Background_FileTxt"
+        ImageSource="/Resources/file_txt_select.png"
+        Stretch="UniformToFill" />
+    <Style x:Key="StyleButtonFileTxt" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background_FileTxt}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Height" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border1" Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border1" Property="Background" Value="{StaticResource Button.MouseOver.Background_FileTxt}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--#region Style Button Folder-->
+    <ImageBrush
+        x:Key="Button.Static.Background_Minimize"
+        ImageSource="/Resources/minimize.png"
+        Stretch="UniformToFill" />
+    <ImageBrush
+        x:Key="Button.MouseOver.Background_Minimize"
+        ImageSource="/Resources/minimize_select.png"
+        Stretch="UniformToFill" />
+    <Style x:Key="StyleButtonMinimize" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="{DynamicResource Button.Static.Background_Minimize}" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="Width" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Height" Value="{StaticResource ButtonFolderHeight}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border1" Background="{TemplateBinding Background}" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="border1" Property="Background" Value="{StaticResource Button.MouseOver.Background_Minimize}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion-->
+
+
+    <!--  Quadrados com cores que são usados prara fazer legenda de objetos como itens de um Tree View  -->
+    <ControlTemplate x:Key="spLegenda">
+        <StackPanel
+            Height="20"
+            Margin="5,0,5,0"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <Rectangle
+                Width="15"
+                Height="15"
+                Fill="{TemplateBinding Background}" />
+            <TextBlock
+                Margin="5,2,0,0"
+                FontSize="14"
+                Text="{TemplateBinding Tag}" />
+        </StackPanel>
+    </ControlTemplate>
+
+
+    <!--#region Style TreeViewItem Seleção Customizada-->
+    <Style x:Key="StyleTreeViewItem" TargetType="TreeViewItem">
+        <Setter Property="IsExpanded" Value="True" />
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource CorBlueSkyLightColor}" />
+        </Style.Resources>
+    </Style>
+    <!--#endregion-->
+</ResourceDictionary>
