@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/docs/">
+    <File Path="docs/arquitetura.md" />
+  </Folder>
   <Folder Name="/SolutionFolder/">
     <File Path=".gitignore" />
     <File Path="README.md" />
