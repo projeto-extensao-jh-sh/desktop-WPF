@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Cadastro de usuário"
         Width="760"
-        Height="560"
-        WindowStartupLocation="CenterOwner"
+        Height="560"        
         ResizeMode="NoResize"
-        Background="#F0EFEE">
+        Background="#F0EFEE"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Topmost="True" Style="{DynamicResource StyleWindow}" Template="{DynamicResource TemplateWindow_AKN}"
+        >
+
     <Window.Resources>
         <Style x:Key="LabelStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="#2E2A4A"/>

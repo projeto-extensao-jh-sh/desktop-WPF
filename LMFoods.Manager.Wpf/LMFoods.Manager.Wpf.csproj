@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<UseWPF>true</UseWPF>
+
+		<!-- Publicação self-contained (não precisa de .NET instalado) -->
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<SelfContained>true</SelfContained>
+
+		<!-- Ícone da aplicação -->
+		<ApplicationIcon>Resources\focco.ico</ApplicationIcon>
+
+		<!-- Versão da aplicação -->
+		<Version>1.0.0.0</Version>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Resources\**\*.png;Resources\**\*.jpg;Resources\**\*.ico" />
+		<Resource Include="Resources\**\*.png;Resources\**\*.jpg;Resources\**\*.ico" />
+	</ItemGroup>
+
+</Project>

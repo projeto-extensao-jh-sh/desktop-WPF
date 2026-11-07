@@ -7,21 +7,13 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/AknStyles.xaml"/>
+                <ResourceDictionary Source="/LMFoodsStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-
-            <Style x:Key="StyleButtonQuestion" TargetType="{x:Type Button}" BasedOn="{StaticResource StyleButtonQuestionXAML}">
-                <EventSetter Event="Click" Handler="Click_QuestionButton"/>
-            </Style>
 
 
             <Style x:Key="StyleWindow" TargetType="{x:Type Window}" BasedOn="{StaticResource StyleWindowXAML}">
                 <EventSetter Event="MouseDown" Handler="Window_MouseDown"/>
             </Style>
-
-
-            <Thickness x:Key="MarginDocumentType">10,0,0,0</Thickness>
-            <Thickness x:Key="MarginStackPanel">0,10,0,0</Thickness>
 
         </ResourceDictionary>
     </Application.Resources>
