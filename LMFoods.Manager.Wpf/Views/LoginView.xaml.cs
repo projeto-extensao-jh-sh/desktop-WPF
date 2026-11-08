@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace DesktopApp.View
+namespace LMFoods.Manager.Wpf.View
 {
     public partial class LoginView : Window
     {

@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using DesktopApp.Views;
+using LMFoods.Manager.Wpf.Views;
 
-namespace DesktopApp.View
+namespace LMFoods.Manager.Wpf.View
 {
     public partial class PanelControlView : Window
     {

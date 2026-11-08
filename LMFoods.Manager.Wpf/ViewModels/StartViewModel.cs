@@ -1,4 +1,4 @@
-﻿namespace DesktopApp.ViewModels;
+﻿namespace LMFoods.Manager.Wpf.ViewModels;
 
 public class StartViewModel : ViewModelBase
 {

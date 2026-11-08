@@ -1,10 +1,10 @@
-﻿using DesktopApp.View;
-using DesktopApp.ViewModels;
+﻿using LMFoods.Manager.Wpf.View;
+using LMFoods.Manager.Wpf.ViewModels;
 using System.Windows;
 using System.Windows.Input;
 
 
-namespace DesktopApp
+namespace LMFoods.Manager.Wpf
 {
     public partial class App : Application
     {

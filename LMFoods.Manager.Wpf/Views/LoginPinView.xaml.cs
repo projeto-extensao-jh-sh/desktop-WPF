@@ -4,7 +4,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace DesktopApp.View
+namespace LMFoods.Manager.Wpf.View
 {
     public partial class LoginPinView : Window
     {

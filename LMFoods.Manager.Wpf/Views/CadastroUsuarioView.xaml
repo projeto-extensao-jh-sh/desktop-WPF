@@ -1,4 +1,4 @@
-<Window x:Class="DesktopApp.Views.CadastroUsuarioView"
+<Window x:Class="LMFoods.Manager.Wpf.Views.CadastroUsuarioView"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Cadastro de usuário"

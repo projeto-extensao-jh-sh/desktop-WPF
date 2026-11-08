@@ -1,6 +1,6 @@
 using System.Windows;
 
-namespace DesktopApp.Views;
+namespace LMFoods.Manager.Wpf.Views;
 
 public partial class CadastroUsuarioView : Window
 {

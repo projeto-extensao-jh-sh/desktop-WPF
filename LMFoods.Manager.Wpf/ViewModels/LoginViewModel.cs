@@ -1,7 +1,7 @@
-﻿using DesktopApp.Commands;
+﻿using LMFoods.Manager.Wpf.Commands;
 using System.Windows.Input;
 
-namespace DesktopApp.ViewModels;
+namespace LMFoods.Manager.Wpf.ViewModels;
 
 public class LoginViewModel : ViewModelBase
 {

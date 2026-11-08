@@ -1,8 +1,8 @@
-﻿<Application x:Class="DesktopApp.App"
+﻿<Application x:Class="LMFoods.Manager.Wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"             
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             xmlns:local="clr-namespace:DesktopApp">
+             xmlns:local="clr-namespace:LMFoods.Manager.Wpf">
 
     <Application.Resources>
         <ResourceDictionary>

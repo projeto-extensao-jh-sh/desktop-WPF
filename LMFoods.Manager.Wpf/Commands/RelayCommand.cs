@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace DesktopApp.Commands;
+namespace LMFoods.Manager.Wpf.Commands;
 
 public class RelayCommand : ICommand
 {

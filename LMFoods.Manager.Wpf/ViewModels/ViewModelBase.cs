@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace DesktopApp.ViewModels;
+namespace LMFoods.Manager.Wpf.ViewModels;
 
 public class ViewModelBase : INotifyPropertyChanged
 {
