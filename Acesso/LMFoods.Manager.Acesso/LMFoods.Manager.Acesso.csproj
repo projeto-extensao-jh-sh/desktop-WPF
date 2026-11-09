@@ -7,6 +7,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\LMFoods.Manager.Acesso.Contracts\LMFoods.Manager.Acesso.Contracts.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<!-- O domínio é internal: só o projeto de dados e os testes enxergam as entidades -->
 		<InternalsVisibleTo Include="LMFoods.Manager.Acesso.Data" />
 		<InternalsVisibleTo Include="LMFoods.Manager.Acesso.Tests" />
@@ -14,6 +18,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.14" />
 	</ItemGroup>
 
 </Project>
