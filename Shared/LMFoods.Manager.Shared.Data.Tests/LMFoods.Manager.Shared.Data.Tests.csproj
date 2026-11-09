@@ -25,4 +25,8 @@
 		<Using Include="Xunit" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<ProjectReference Include="..\LMFoods.Manager.Shared.Data\LMFoods.Manager.Shared.Data.csproj" />
+	</ItemGroup>
+
 </Project>
