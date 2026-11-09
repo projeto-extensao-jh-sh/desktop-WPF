@@ -6,4 +6,10 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<!-- O domínio é internal: só o projeto de dados e os testes enxergam as entidades -->
+		<InternalsVisibleTo Include="LMFoods.Manager.Acesso.Data" />
+		<InternalsVisibleTo Include="LMFoods.Manager.Acesso.Tests" />
+	</ItemGroup>
+
 </Project>
