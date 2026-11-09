@@ -52,7 +52,6 @@ lmfoods-manager/
     │   ├── LoginPinView.xaml
     │   ├── CadastroUsuarioView.xaml
     │   ├── PanelControlView.xaml
-    │   └── VentasView.xaml
     └── Resources/                   ← logo, ícone e imagens dos pratos
 ```
 

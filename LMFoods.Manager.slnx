@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/Acesso/">
+    <Project Path="Acesso/LMFoods.Manager.Acesso.Contracts/LMFoods.Manager.Acesso.Contracts.csproj" />
+    <Project Path="Acesso/LMFoods.Manager.Acesso.Data/LMFoods.Manager.Acesso.Data.csproj" />
+    <Project Path="Acesso/LMFoods.Manager.Acesso.Tests/LMFoods.Manager.Acesso.Tests.csproj" />
+    <Project Path="Acesso/LMFoods.Manager.Acesso/LMFoods.Manager.Acesso.csproj" />
+  </Folder>
   <Folder Name="/Docs/">
     <File Path="docs/arquitetura.md" />
   </Folder>
