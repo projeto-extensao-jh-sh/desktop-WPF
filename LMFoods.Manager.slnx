@@ -8,6 +8,10 @@
   <Folder Name="/Docs/">
     <File Path="docs/arquitetura.md" />
   </Folder>
+  <Folder Name="/Shared/">
+    <Project Path="Shared/LMFoods.Manager.Shared.Data.Tests/LMFoods.Manager.Shared.Data.Tests.csproj" />
+    <Project Path="Shared/LMFoods.Manager.Shared.Data/LMFoods.Manager.Shared.Data.csproj" />
+  </Folder>
   <Folder Name="/SolutionFolder/">
     <File Path=".gitignore" />
     <File Path="README.md" />
