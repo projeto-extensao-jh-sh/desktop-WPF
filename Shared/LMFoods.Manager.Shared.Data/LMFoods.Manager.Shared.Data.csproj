@@ -6,4 +6,13 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+
+	<ItemGroup>
+		<!-- Driver de conexão com o SQL Server (LocalDB, Express e Azure SQL) -->
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
+		<!-- Dependência indireta do SqlClient, fixada numa versão mais nova para corrigir um alerta de segurança do NuGet -->
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.14" />
+	</ItemGroup>
+
+
 </Project>
