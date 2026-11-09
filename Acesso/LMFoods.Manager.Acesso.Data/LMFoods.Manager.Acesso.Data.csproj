@@ -6,4 +6,9 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<EmbeddedResource Include="Scripts\*.sql" />
+		<EmbeddedResource Include="Seeds\*.sql" />
+	</ItemGroup>
+
 </Project>
