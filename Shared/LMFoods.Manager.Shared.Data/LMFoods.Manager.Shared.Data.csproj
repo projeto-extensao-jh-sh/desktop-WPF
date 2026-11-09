@@ -8,6 +8,8 @@
 
 
 	<ItemGroup>
+		<!-- Migração do banco: executa os scripts .sql embutidos e registra os já executados em dbo.SchemaVersions -->
+		<PackageReference Include="dbup-sqlserver" Version="7.2.0" />
 		<!-- Driver de conexão com o SQL Server (LocalDB, Express e Azure SQL) -->
 		<PackageReference Include="Microsoft.Data.SqlClient" Version="7.1.1" />
 		<!-- Dependência indireta do SqlClient, fixada numa versão mais nova para corrigir um alerta de segurança do NuGet -->
